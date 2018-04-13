@@ -1,0 +1,21 @@
+language: php
+php:
+- 7.1
+script:
+- curl -L -o ./zsclient https://github.com/zend-patterns/ZendServerSDK/raw/master/bin/zs-client.phar
+- chmod a+x ./zsclient
+- mkdir build
+- ./zs-client packZpk --folder="." --destination="./build"
+deploy:
+  provider: releases
+  api_key:
+    secure: iqjT7mNPFwl++HAv43PGCDMB/TLq+4thMkc/lF531oksz5AgSbexVjnZ5cX7vKYwYE1QAZ14knVfIID0q7ff6uSXvVrrJK3Si4trXXskgLnXXH7aFKh7xo0gt1jhWmnTiZcr2f9jzbWf6z4m0MbnHsJHsRfp2Qe6ovm+4cx8gCE8mAxMON9ULi2CuhcRKdARtXX8XY+FsrvYroVSKUCXsMdR4booFFS4L6BW7T09M9e2Dhj7ewmd4X0Ew8NygkETqzwAz7Du+JRr1VG7Y9HYasVMhmZes9wRET6Tkg7sIjqGEfzOKE+P3HIeLFBB0zCjy38RdeogVXg+4QgMRxNJS+BggNy3qVIbkAj+Tmrn4zMF3JhHP7KALgal/TgPxEFzAFBKvDEHfPj+8ch7Iks48t22B5KbEfgZkcOqZLnbBGl88LHcTNVvdpJsD+JDPKO7hTG/nVPeZRZeZM9nCKZKjEJmfqHADY8/uu6/0Zv0Tvq0I/M8zry3Kq1+eVeK554aMgD1gNh71lr55Ej1OrLbELwN2nJz7jGiDKCtlm3eU9/HTrMA2HVqTx/E4ckSQxSVsCJv2LOHppclbK0oLbz4K7BYA35gf6hKw3vGoHrIDK4nsMMHyrAC9Q8xKqDEFnuq0ekhwBo0dHnikwbazRkEa2fDPhAfRBlxLX9H5GisdZ4=
+  file: ./build/Prometheus-ZendServer-Scraper.zpk
+  on:
+    repo: 5square/Prometheus-ZendServer-Scraper
+    tags: true
+  skip_cleanup: true
+         
+env:
+  global:
+  - secure: oqOOTC+hsZYuEtyRdO/wpuxqzYCk166TSXM/31XgVXUEqP3+K9hC2ZfTZZo9n1DvY7NwUI4hfH22br4+F8EhSrOtBnF3r0mmtJiAcUnhNU/g48FHVPzsAP2t7Fq4Cbk49MgnjzIK1IIDrADHUtK6tCxtaHOlZZuxkgNgtvVBFvAAj41yexsISVrR5Xg4qo45OHNphf79Ub5RPRPMJmCo6v1mtyQhn/Q4T5B7NbJMjhMKApqA0PgzcTTSKvCkmj8FKQbhFwgh7nktVfJlKe6T9S49v7XJmBgeD3qKCC8cq3mtCXkS2BD1v6uLjYFx8Ef+o5xq0N60yiJrNVajBBaJE/bT3Xeh64eGx66Bcnp4MnlJQG3FFaImFWfkxvS3rQgpEYxUBqjzawCH6JU2I1KfsD3UOvZ0pNff4TC92NSDCRrqmYEMkDNSEyjz7aRQBVsaYtcFWsiIaJARtFeNGVTMUifHlH+I/9/H+dWW7l3gdKmMADlmNGRRc+6VQedzwB1kfPWJ/zEUueWrdQt8O+0NX7kl9OQQgt8NKSQywXatFeTyGfsgcqa9B/NITXu5s2PyYEu0l43bWvys/o64Z4c5I5OsZB6bTXkZ2vOLxHQDp1U69kbOmRyxlBFj0lRO8p/3KKuF70xd9Wn7TL07QTXunGA4x9j+b+gwIoqYhf1NkEc=
