@@ -5,7 +5,7 @@ script:
 - curl -L -o ./zsclient https://github.com/zend-patterns/ZendServerSDK/raw/master/bin/zs-client.phar
 - chmod a+x ./zsclient
 - mkdir build
-- ./zs-client packZpk --folder="." --destination="./build"
+- ./zsclient packZpk --folder="." --destination="./build"
 deploy:
   provider: releases
   api_key:
